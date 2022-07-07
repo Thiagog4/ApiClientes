@@ -2,8 +2,22 @@ using ApiClientes.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ApiClientes.Data;
+using System.Web.Http.Cors;
 
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+                          policy =>
+                          {
+                              policy.WithOrigins("https://apiclientesdeploy.azurewebsites.net")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                          });
+});
 
 
 builder.Services.AddDbContext<ApiClientesContext>(x => x.UseSqlServer(
@@ -29,6 +43,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllers();
