@@ -23,6 +23,10 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<ApiClientesContext>(x => x.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+builder.Services.AddDbContext<ClientesContext>(x => x.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ));
+
 
 // Add services to the container.
 

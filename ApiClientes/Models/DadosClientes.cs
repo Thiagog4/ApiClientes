@@ -10,27 +10,51 @@ namespace ApiClientes.Models
 {
     public partial class DadosClientes
     {
+        public DadosClientes()
+        {
+            Contatos = new HashSet<Contatos>();
+        }
+
         [Key]
         public int Id { get; set; }
+        [Required]
+        [StringLength(11)]
+        [Unicode(false)]
         public string Cpf { get; set; }
-
         [Required]
         [StringLength(200)]
         [Unicode(false)]
         public string Nome { get; set; }
+        [Required]
+        [StringLength(11)]
+        [Unicode(false)]
         public string Celular { get; set; }
+        [Required]
+        [StringLength(11)]
+        [Unicode(false)]
         public string Cep { get; set; }
         [Required]
         [StringLength(200)]
         [Unicode(false)]
         public string Endereco { get; set; }
+        [Required]
+        [StringLength(10)]
+        [Unicode(false)]
         public string Numero { get; set; }
+        [Required]
         [StringLength(100)]
         [Unicode(false)]
         public string Complemento { get; set; }
+        [Required]
         [StringLength(150)]
         [Unicode(false)]
         public string Email { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Unicode(false)]
         public string EstadoCivil { get; set; }
+
+        [InverseProperty("Cliente")]
+        public virtual ICollection<Contatos> Contatos { get; set; }
     }
 }

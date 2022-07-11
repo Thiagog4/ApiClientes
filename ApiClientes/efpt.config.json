@@ -6,13 +6,17 @@
    "FilterSchemas": false,
    "IncludeConnectionString": true,
    "ModelNamespace": null,
-   "OutputContextPath": null,
+   "OutputContextPath": "Data",
    "OutputPath": "Models",
    "ProjectRootNamespace": "ApiClientes",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,
    "Tables": [
+      {
+         "Name": "[dbo].[Contatos]",
+         "ObjectType": 0
+      },
       {
          "Name": "[dbo].[DadosClientes]",
          "ObjectType": 0
